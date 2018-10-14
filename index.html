@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>째깍째깍2</title>
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:800" rel="stylesheet">
+	<style>
+		body {background-image: url(tictoc.jpg);}
+		#dropText {font-family: 'Nanum Gothic', sans-serif; font-size: 4.8em; position: absolute; top: 0px; z-index: 1; opacity: 0; color: white;
+			animation: textColor 3s infinite paused;}
+		#imageBox {width: 400px; height: 400px; background: red; position: absolute; left: 770px; top: 300px;  z-index: 2; cursor:pointer;}
+		#inImg {width: 400px; position: absolute; z-index: 2; }
+		
+
+
+		@keyframes textColor {
+			0% {opacity: 0; color: white;}
+			10% {opacity: 10; color: gray;}
+			20% {opacity: 20; color: pink;}
+			40% {opacity: 40; color: red;}
+			60% {opacity: 60; color: purple;}
+			80% {opacity: 80; color: blue;}
+			100%{opacity: 100; color: skyblue;}
+
+		}
+
+
+	</style>
+</head>
+<body>
+	
+	<div id="imageBox">
+		<img id="inImg" src="1.jpg">
+	</div>
+
+	<div id="dropText">
+		망했다 망했다 망했다 망했다 망했다 망했다 망했다 망했다
+	</div>
+
+	<audio id="clockSound">
+		<source src="tictocS.mp3" type="audio/mpeg">
+	</audio>
+
+	<script type="text/javascript">
+		var toggle = "off";
+			imageBox.onclick = function() {
+				
+				if (toggle=="off") {
+					toggle="on"
+
+					clockSound.play();
+					clockSound.loop = true;
+					
+					inImg.setAttribute("src","2.jpg");
+					document.body.style.backgroundImage = "url('tictoc.gif')";
+					dropText.style.animationPlayState = "running";
+
+					var total = 0;
+					for (var i = 0; i< 10; i++){
+						var a = document.getElementById("dropText");
+						var b = a.cloneNode(true);
+						b.style.top = i*100 + "px";
+						b.style.animationDelay = i*0.3 + "s";
+
+						document.body.appendChild(b);
+					}
+				} else {
+					toggle="off"
+
+					clockSound.loop = false;
+					clockSound.paused();
+
+				}
+
+			}
+		
+
+	</script>
+</body>
+</html>
